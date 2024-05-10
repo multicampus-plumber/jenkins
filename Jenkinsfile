@@ -104,6 +104,12 @@ pipeline {
         }
       }
     }
+       // 파이프라인 종료 후 워크스페이스 초기화
+    post {
+        always {
+            cleanWs()
+        }
+    }
   }
 }
 
