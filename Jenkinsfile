@@ -9,7 +9,7 @@ pipeline {
     //dockerHubRegistryCredential = 'credential-dockerhub'
     awsecrRegistry = '793888778904.dkr.ecr.ap-northeast-2.amazonaws.com/eks-project-repo'
     awsecrRegistryCredential = 'credential-AWS-ECR'
-    githubCredential = 'credential-github'
+    githubCredential = 'github-credentials'
     gitEmail = 'kgw4949@gmail.com'
     gitName = 'hatacon97'
   }
@@ -100,7 +100,7 @@ pipeline {
     stage('Push to Git Repository') {
       steps {
         withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: githubCredential, usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
-             sh "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@https://github.com/multicampus-plumber/test.git"       
+             sh "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/multicampus-plumber/test.git"       
         }
       }
     }
