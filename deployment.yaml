@@ -18,9 +18,8 @@ spec:
         app: demo-nginx
     spec:
       containers:
-      - image: nginx
-        name: nginx
-        ports:
-          -containerPort: 80
-        resources: {}
-status: {}
+      - image: ipnginx
+        name: ipnginx
+        port:
+        - containerPort: 80
+
