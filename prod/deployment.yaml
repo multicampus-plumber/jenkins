@@ -22,4 +22,5 @@ spec:
         name: nginx
         ports:
         - containerPort: 80
-
+      imagePullSecrets:
+      - name: ecr-secret
