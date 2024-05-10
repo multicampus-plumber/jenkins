@@ -104,7 +104,6 @@ pipeline {
         }
       }
     }
-    stages {
     stage("Run script") {
         steps {
             script {
@@ -144,7 +143,6 @@ pipeline {
             }
         }
     }
-}
   }
 }
 
