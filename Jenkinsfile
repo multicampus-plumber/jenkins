@@ -104,45 +104,6 @@ pipeline {
         }
       }
     }
-    stage("Run script") {
-        steps {
-            script {
-                exitCode = sh(script: "exit 1", returnStatus: true)
-            }
-        }
-    }
-
-    stage("Abort the build") {
-        when {
-            expression {
-                !exitCode
-            }
-        }
-
-        steps {
-            script {
-                currentBuild.result = "ABORTED"
-
-                error("No changes to client code")
-            }
-        }
-    }
-
-    stage("Fail the build") {
-        when {
-            expression {
-                exitCode
-            }
-        }
-
-        steps {
-            script {
-                currentBuild.result = "FAILURE"
-
-                error("Build failed")
-            }
-        }
-    }
   }
 }
 
