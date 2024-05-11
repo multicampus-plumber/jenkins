@@ -83,13 +83,13 @@ pipeline {
       steps {
         // git 계정 로그인, 해당 레포지토리의 main 브랜치에서 클론
         git credentialsId: githubCredential,
-            url: 'https://github.com/multicampus-plumber/test2.git',
+            url: 'https://github.com/multicampus-plumber/test.git',
             branch: 'main'  
         
         // 이미지 태그 변경 후 메인 브랜치에 푸시
         sh "git config --global user.email ${gitEmail}"
         sh "git config --global user.name ${gitName}"
-        sh "kustomize edit set image ${awsecrRegistry}:${currentBuild.number}"
+        sh "cd prod && kustomize edit set image ${awsecrRegistry}:${currentBuild.number}"
         sh "git add -A"
         sh "git status"
         sh "git commit -m 'update the image tag'"
