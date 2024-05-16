@@ -1,7 +1,7 @@
 # react-dockerizing/Dockerfile
 
 # base image 설정(as build 로 완료된 파일을 밑에서 사용할 수 있다.)
-FROM node:14-alpine as build
+FROM node:16.20.2 as build
 
 # 컨테이너 내부 작업 디렉토리 설정
 WORKDIR /app
@@ -20,7 +20,7 @@ COPY . .
 RUN npm run build
 
 # prod environment
-FROM nginx:stable-alpine
+FROM nginx
 
 # 이전 빌드 단계에서 빌드한 결과물을 /usr/share/nginx/html 으로 복사한다.
 COPY --from=build /app/build /usr/share/nginx/html
