@@ -44,17 +44,22 @@ function Navbar() {
                 <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                     <li className='nav-item'>
                         <Link to='/' className='nav-links' onClick = {closeMobileMenu}>
-                            Home
+                            홈
                         </Link>
                     </li>
                     <li className='nav-item'>
-                        <Link to='/station' className='nav-links' onClick = {closeMobileMenu}>
-                            Station
+                        <Link to='/notice' className='nav-links' onClick = {closeMobileMenu}>
+                            공지사항
                         </Link>
                     </li>
                     <li className='nav-item'>
-                        <Link to='/voc' className='nav-links' onClick = {closeMobileMenu}>
-                            Voc
+                        <Link to='/jaso' className='nav-links' onClick = {closeMobileMenu}>
+                            자기소개서
+                        </Link>
+                    </li>
+                    <li className='nav-item'>
+                        <Link to='/resume' className='nav-links' onClick = {closeMobileMenu}>
+                            이력서
                         </Link>
                     </li>
                     <li className='nav-item'>
