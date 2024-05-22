@@ -24,6 +24,7 @@ import getSignUpTheme from '../components/getSignUpTheme';
 import ToggleColorMode from '../components/ToggleColorMode';
 import { GoogleIcon, FacebookIcon } from '../components/CustomIcons';
 
+
 function ToggleCustomTheme({ showCustomTheme, toggleCustomTheme }) {
   return (
     <Box
