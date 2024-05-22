@@ -4,8 +4,8 @@ import Navbar from'./components/Navbar';
 import Home from'./pages/Home';
 import Jaso from'./pages/Jaso';
 import Resume from'./pages/Resume';
-import signIn from './pages/signIn';
-import signUp from './pages/signUp';
+import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
 function App() {
 
     return (
@@ -17,8 +17,8 @@ function App() {
           
           <Route path='/jaso' element={<Jaso />} />
           <Route path='/resume' element={<Resume />} />
-          <Route path='/sign-in' element={<signIn />} />
-          <Route path='/sign-up' elemnet={<signUp />} />
+          <Route path='/sign-in' element={<SignIn />} />
+          <Route path='/sign-up' elemnet={<SignUp />} />
         </Routes>
       </Router>
       </>

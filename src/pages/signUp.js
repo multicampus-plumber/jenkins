@@ -20,9 +20,9 @@ import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import AutoAwesomeRoundedIcon from '@mui/icons-material/AutoAwesomeRounded';
 import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 
-import getSignUpTheme from './components/getSignUpTheme';
-import ToggleColorMode from './components/ToggleColorMode';
-import { GoogleIcon, FacebookIcon } from './components/CustomIcons';
+import getSignUpTheme from '../components/getSignUpTheme';
+import ToggleColorMode from '../components/ToggleColorMode';
+import { GoogleIcon, FacebookIcon } from '../components/CustomIcons';
 
 function ToggleCustomTheme({ showCustomTheme, toggleCustomTheme }) {
   return (

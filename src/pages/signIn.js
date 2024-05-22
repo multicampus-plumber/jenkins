@@ -21,10 +21,10 @@ import { ThemeProvider, createTheme, styled } from '@mui/material/styles';
 import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 import AutoAwesomeRoundedIcon from '@mui/icons-material/AutoAwesomeRounded';
 
-import ForgotPassword from './components/ForgotPassword';
-import getSignInTheme from './components/getSignInTheme';
-import ToggleColorMode from './components/ToggleColorMode';
-import { GoogleIcon, FacebookIcon } from './components/CustomIcons';
+import ForgotPassword from '../components/ForgotPassword';
+import getSignInTheme from '../components/getSignInTheme';
+import ToggleColorMode from '../components/ToggleColorMode';
+import { GoogleIcon, FacebookIcon } from '../components/CustomIcons';
 
 function ToggleCustomTheme({ showCustomTheme, toggleCustomTheme }) {
   return (
