@@ -21,9 +21,9 @@ import { ThemeProvider, createTheme, styled } from '@mui/material/styles';
 import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 import AutoAwesomeRoundedIcon from '@mui/icons-material/AutoAwesomeRounded';
 
-import ForgotPassword from './components/ForgotPassword';
-import getSignInTheme from './components/getSignInTheme';
-import ToggleColorMode from './components/ToggleColorMode';
+import ForgotPassword from './src/components/ForgotPassword';
+import getSignInTheme from './src/components/getSignInTheme';
+import ToggleColorMode from './src/components/ToggleColorMode';
 import { GoogleIcon, FacebookIcon } from './components/CustomIcons';
 
 function ToggleCustomTheme({ showCustomTheme, toggleCustomTheme }) {
