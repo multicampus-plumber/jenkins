@@ -44,26 +44,31 @@ function Navbar() {
                 <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                     <li className='nav-item'>
                         <Link to='/' className='nav-links' onClick = {closeMobileMenu}>
-                            Home
+                            홈
                         </Link>
                     </li>
                     <li className='nav-item'>
-                        <Link to='/station' className='nav-links' onClick = {closeMobileMenu}>
-                            Station
+                        <Link to='/notice' className='nav-links' onClick = {closeMobileMenu}>
+                            공지사항
                         </Link>
                     </li>
                     <li className='nav-item'>
-                        <Link to='/voc' className='nav-links' onClick = {closeMobileMenu}>
-                            Voc
+                        <Link to='/jaso' className='nav-links' onClick = {closeMobileMenu}>
+                            자기소개서
                         </Link>
                     </li>
                     <li className='nav-item'>
-                        <Link to='/sign-up' className='nav-links-mobile' onClick = {closeMobileMenu}>
-                            Sign Up
+                        <Link to='/interview' className='nav-links' onClick = {closeMobileMenu}>
+                            면접후기
+                        </Link>
+                    </li>
+                    <li className='nav-item'>
+                        <Link to='/sign-in' className='nav-links-mobile' onClick = {closeMobileMenu}>
+                            Sign In
                         </Link>
                     </li>
                 </ul>
-                {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}
+                {button && <Button buttonStyle='btn--outline'>회원가입</Button>}
             </div>
         </nav>
         </>
