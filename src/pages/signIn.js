@@ -24,7 +24,7 @@ import AutoAwesomeRoundedIcon from '@mui/icons-material/AutoAwesomeRounded';
 import ForgotPassword from './src/components/ForgotPassword';
 import getSignInTheme from './src/components/getSignInTheme';
 import ToggleColorMode from './src/components/ToggleColorMode';
-import { GoogleIcon, FacebookIcon } from './components/CustomIcons';
+import { GoogleIcon, FacebookIcon } from './src/components/CustomIcons';
 
 function ToggleCustomTheme({ showCustomTheme, toggleCustomTheme }) {
   return (
