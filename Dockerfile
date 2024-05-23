@@ -21,11 +21,14 @@ RUN npm run build
 
 
 
+
+
+
+
+
 # prod environment
 FROM ubuntu:22.04
 
-RUN apt-get install curl
-RUN curl -sL https://deb.nodesource.com/setup_18.x | -E bash -
 RUN apt-get update
 RUN apt-get install nodejs
 
