@@ -9,6 +9,9 @@ import SignUp from './pages/SignUp';
 function App() { 
   const [mode, setMode] = useState("");
 
+  console.log(mode)
+  console.log(setMode)
+
   useEffect(() => {
     fetch("http://a825e3f9329ee47d493b753be8a74e7f-1673472404.ap-northeast-2.elb.amazonaws.com/authcheck")
       .then((res) => res.json())
