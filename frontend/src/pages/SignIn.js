@@ -25,7 +25,6 @@ import ForgotPassword from '../components/ForgotPassword';
 import getSignInTheme from '../components/getSignInTheme';
 import ToggleColorMode from '../components/ToggleColorMode';
 import { GoogleIcon, FacebookIcon } from '../components/CustomIcons';
-import { useNavigate } from 'react-router-dom';
 
 const address = "http://a825e3f9329ee47d493b753be8a74e7f-1673472404.ap-northeast-2.elb.amazonaws.com";
 
@@ -113,8 +112,6 @@ export default function SignIn() {
   const [passwordErrorMessage, setPasswordErrorMessage] = React.useState('');
   const [open, setOpen] = React.useState(false);
 
-  const navigate = useNavigate();
-
   const toggleColorMode = () => {
     setMode((prev) => (prev === 'dark' ? 'light' : 'dark'));
   };
@@ -151,7 +148,6 @@ export default function SignIn() {
         if(json.isLogin==="True"){
          /* props.setMode("WELCOME");*/
          alert("로그인 성공");
-         navigate("/");
         }
         else {
           alert(json.isLogin)

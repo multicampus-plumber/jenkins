@@ -63,15 +63,10 @@ app.post("/login", (req, res) => { // 데이터 받아서 결과 전송
     const password = req.body.userPassword;
     const sendData = { isLogin: "" };
 
-    console.log(email , password);
-
     if (email && password) {             // id와 pw가 입력되었는지 확인
         db.query('SELECT * FROM userTable WHERE email = ?', [email], function (error, results, fields) {
             if (error) throw error;
             if (results.length > 0) {       // db에서의 반환값이 있다 = 일치하는 아이디가 있다.      
-
-                console.log(results);
-
                 bcrypt.compare(password , results[0].password, (err, result) => {    // 입력된 비밀번호가 해시된 저장값과 같은 값인지 비교
 
                     if (result === true) {                  // 비밀번호가 일치하면
@@ -80,6 +75,7 @@ app.post("/login", (req, res) => { // 데이터 받아서 결과 전송
                         req.session.save(function () {
                             sendData.isLogin = "True"
                             res.send(sendData);
+                            res.redirect('/');
                         });
                       /*  
                       db.query(`INSERT INTO logTable (created, username, action, command, actiondetail) VALUES (NOW(), ?, 'login' , ?, ?)`
@@ -109,8 +105,6 @@ app.post("/signup", (req, res) => {  // 데이터 받아서 결과 전송
     
     const sendData = { isSuccess: "" };
 
-    console.log(username , useremail , password);
-
     if (username && password && useremail) {
         db.query('SELECT * FROM userTable WHERE email = ?', [useremail], function(error, results, fields) { // DB에 같은 이름의 회원아이디가 있는지 확인
             if (error) throw error;
@@ -122,6 +116,7 @@ app.post("/signup", (req, res) => {  // 데이터 받아서 결과 전송
                     req.session.save(function () {                        
                         sendData.isSuccess = "True"
                         res.send(sendData);
+                        res.redirect('/sing-in');
                     });
                 });
             }

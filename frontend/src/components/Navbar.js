@@ -7,9 +7,6 @@ import Button from '@mui/material/Button';
 
 import Link from '@mui/material/Link';
 export default function ButtonAppBar(props) {
-
-  console.log(props);
-  console.log(props.mode);
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
