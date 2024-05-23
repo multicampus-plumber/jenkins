@@ -30,8 +30,11 @@ RUN npm run build
 FROM ubuntu:22.04
 
 
-RUN apt-get update && apt-get install -y wget
-RUN wget https://deb.nodesource.com/setup_18.x &&  chmod +x setup_18.x &&  ./setup_18.x && rm setup_18.x
+
+RUN apt-get update && apt-get install -y curl
+RUN curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+
+RUN nvm install 18.0.0
 
 WORKDIR ./backend
 COPY ./backend .
@@ -49,8 +52,6 @@ COPY nginx/nginx.conf /etc/nginx/conf.d
 
 # 컨테이너의 80번 포트를 열어준다.
 EXPOSE 80
-
-RUN apt-get install npm
 
 RUN npm install
 
