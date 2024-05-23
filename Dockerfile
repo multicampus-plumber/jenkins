@@ -31,11 +31,12 @@ FROM ubuntu:22.04
 
 
 RUN apt-get update && apt-get install -y wget
-RUN wget https://deb.nodesource.com/setup_16.x &&  chmod +x setup_16.x &&  ./setup_16.x && rm setup_16.x
+RUN wget https://deb.nodesource.com/setup_18.x &&  chmod +x setup_18.x &&  ./setup_18.x && rm setup_18.x
 
 WORKDIR ./backend
 COPY ./backend .
 
+RUN apt-get install nginx
 
 # 이전 빌드 단계에서 빌드한 결과물을 /usr/share/nginx/html 으로 복사한다.
 COPY --from=build /app/build /usr/share/nginx/html
