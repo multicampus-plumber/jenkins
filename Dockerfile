@@ -32,11 +32,11 @@ FROM ubuntu:22.04
 WORKDIR ./backend
 COPY ./backend .
 
-RUN apt-get update && apt-get install -y curl
-RUN curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
-RUN nvm install 18
-RUN npm install 
-RUN npm start
+RUN apt-get -qq update
+RUN apt-get -qq upgrade --yes 
+RUN apt-get -qq install curl --yes
+RUN curl -sL https://deb.nodesource.com/setup_18.x | bash -
+RUN apt-get -qq install nodejs --yes
 
 RUN apt-get install nginx -y
 
@@ -51,6 +51,9 @@ COPY nginx/nginx.conf /etc/nginx/conf.d
 
 # 컨테이너의 80번 포트를 열어준다.
 EXPOSE 80
+
+RUN npm install
+RUN npm start &
 
 # nginx 서버를 실행하고 백그라운드로 동작하도록 한다.
 CMD ["nginx", "-g", "daemon off;"]
