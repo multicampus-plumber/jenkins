@@ -24,9 +24,10 @@ RUN npm run build
 # prod environment
 FROM ubuntu:22.04
 
-RUN curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash - && 
-        apt update && 
-        apt install nodejs
+RUN curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash - 
+        
+RUN apt-get update
+RUN apt-get install nodejs
 
 WORKDIR ./backend
 COPY backend/* ./
