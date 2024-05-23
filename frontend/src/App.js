@@ -28,7 +28,7 @@ function App() {
     return (
       <>
       <Router>
-        <Navbar setMode={setMode} />
+        <Navbar mode={mode} />
         <Routes>
           <Route exact path='/' element={<Home/>} />
           

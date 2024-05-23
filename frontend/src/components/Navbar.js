@@ -9,6 +9,7 @@ import Link from '@mui/material/Link';
 export default function ButtonAppBar(props) {
 
   console.log(props);
+  console.log(props.mode);
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -18,7 +19,7 @@ export default function ButtonAppBar(props) {
           </Typography>
           <Button color="inherit" href='/jaso'>자기소개서</Button>
           <Button color="inherit" href='/interview'>면접 후기</Button>
-          { props.setMode === "WELCOME" ? 
+          { props.mode === "LOGIN" ? 
             <Button color="inherit" href='/sign-in'>Login</Button> : 
            <Button color="inherit" href='/logout'>Logout</Button> }
         </Toolbar>
