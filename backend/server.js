@@ -33,7 +33,7 @@ const corsOptions ={
 app.use(cors(corsOptions));
 
 app.get('/', (req, res) => {    
-    
+    res.send("테스트테스트")
     /*req.sendFile(path.join(__dirname, '/build/index.html'));*/
 })
 
