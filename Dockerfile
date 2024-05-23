@@ -58,7 +58,7 @@ COPY nginx/nginx_sub.conf /etc/nginx/nginx.conf
 EXPOSE 80
 
 RUN npm install
-RUN pm2 server.js
+RUN pm2 start server.js
 
 RUN nginx -s reload
 
