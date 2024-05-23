@@ -74,7 +74,6 @@ app.post("/login", (req, res) => { // 데이터 받아서 결과 전송
                         req.session.nickname = email;
                         req.session.save(function () {
                             sendData.isLogin = "True" 
-                            res.redirect('/');
                             res.send(sendData);
                            
                         });
@@ -116,7 +115,6 @@ app.post("/signup", (req, res) => {  // 데이터 받아서 결과 전송
                     if (error) throw error;
                     req.session.save(function () {                        
                         sendData.isSuccess = "True"        
-                        res.redirect('/sing-in');
                         res.send(sendData);
 
                     });
