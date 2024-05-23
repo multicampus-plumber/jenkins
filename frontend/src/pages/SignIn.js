@@ -152,6 +152,7 @@ export default function SignIn() {
          /* props.setMode("WELCOME");*/
          alert("로그인 성공");
          navigate("/");
+         window.location.reload();
         }
         else {
           alert(json.isLogin)
