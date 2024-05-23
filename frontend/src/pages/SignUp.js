@@ -23,7 +23,8 @@ import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 import getSignUpTheme from '../components/getSignUpTheme';
 import ToggleColorMode from '../components/ToggleColorMode';
 import { GoogleIcon, FacebookIcon } from '../components/CustomIcons';
-import { redirect } from 'react-router-dom';
+
+const address = "http://a825e3f9329ee47d493b753be8a74e7f-1673472404.ap-northeast-2.elb.amazonaws.com";
 
 function ToggleCustomTheme({ showCustomTheme, toggleCustomTheme }) {
   return (
@@ -162,7 +163,7 @@ export default function SignUp() {
       userPassword: data.get('userPassword')
     }
 
-    fetch("http://localhost:3001/signup", { //signin 주소에서 받을 예정
+    fetch(address + "/signup", { //signin 주소에서 받을 예정
           method: "post", // method :통신방법
           headers: {      // headers: API 응답에 대한 정보를 담음
             "content-type": "application/json",

@@ -27,7 +27,7 @@ app.use(session({
 const corsOptions ={
     origin: true ,
     methods: ["GET" ,"POST", "PUT" , "DELETE"],
-    allowdHeaders: ["Conten-Type" , "Authorization" , "Access-Control-Allow-Private-Network"],
+    allowdHeaders: ["Conten-Type" , "Authorization"],
 };
 
 app.use(cors(corsOptions));
