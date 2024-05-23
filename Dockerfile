@@ -34,9 +34,9 @@ COPY ./backend .
 
 RUN apt-get update && apt-get install -y curl
 RUN curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
-        && nvm install 18.0.0
-        && npm install 
-        && npm start &
+RUN nvm install 18
+RUN npm install 
+RUN npm start
 
 RUN apt-get install nginx -y
 
