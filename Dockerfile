@@ -30,10 +30,8 @@ RUN npm run build
 FROM ubuntu:22.04
 
 
-RUN wget https://deb.nodesource.com/setup_16.x 
-RUN chmod +x setup_16.x 
-RUN ./setup_16.x 
-RUN rm setup_16.x
+RUN apt-get install -y wget
+RUN wget https://deb.nodesource.com/setup_16.x &&  chmod +x setup_16.x &&  ./setup_16.x && rm setup_16.x
 
 WORKDIR ./backend
 COPY ./backend .
