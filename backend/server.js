@@ -73,9 +73,10 @@ app.post("/login", (req, res) => { // 데이터 받아서 결과 전송
                         req.session.is_logined = true;      // 세션 정보 갱신
                         req.session.nickname = email;
                         req.session.save(function () {
-                            sendData.isLogin = "True"
-                            res.send(sendData);
+                            sendData.isLogin = "True" 
                             res.redirect('/');
+                            res.send(sendData);
+                           
                         });
                       /*  
                       db.query(`INSERT INTO logTable (created, username, action, command, actiondetail) VALUES (NOW(), ?, 'login' , ?, ?)`
@@ -114,9 +115,10 @@ app.post("/signup", (req, res) => {  // 데이터 받아서 결과 전송
                 db.query('INSERT INTO userTable (username, password, email) VALUES(?,?,?)', [username, hasedPassword, useremail], function (error, data) {
                     if (error) throw error;
                     req.session.save(function () {                        
-                        sendData.isSuccess = "True"
-                        res.send(sendData);
+                        sendData.isSuccess = "True"        
                         res.redirect('/sing-in');
+                        res.send(sendData);
+
                     });
                 });
             }
