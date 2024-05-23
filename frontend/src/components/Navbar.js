@@ -4,10 +4,11 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+
 import Link from '@mui/material/Link';
-export default function ButtonAppBar() {
+export default function ButtonAppBar(props) {
+
+  console.log(props.setMode);
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -17,7 +18,9 @@ export default function ButtonAppBar() {
           </Typography>
           <Button color="inherit" href='/jaso'>자기소개서</Button>
           <Button color="inherit" href='/interview'>면접 후기</Button>
-          <Button color="inherit" href='/sign-in'>Login</Button>
+          { props.setMode === "WELCOME" ? 
+            <Button color="inherit" href='/sign-in'>Login</Button> : 
+           <Button color="inherit" href='/logout'>Logout</Button> }
         </Toolbar>
       </AppBar>
     </Box>

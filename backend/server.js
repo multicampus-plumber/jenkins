@@ -134,7 +134,6 @@ app.post("/signup", (req, res) => {  // 데이터 받아서 결과 전송
         sendData.isSuccess = "아이디와 비밀번호를 입력하세요!"
         res.send(sendData);  
     }
-    
 });
 
 
