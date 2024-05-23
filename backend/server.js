@@ -27,12 +27,13 @@ app.use(session({
 const corsOptions ={
     origin: true ,
     methods: ["GET" ,"POST", "PUT" , "DELETE"],
-    allowdHeaders: ["Conten-Type" , "Authorization"],
+    allowdHeaders: ["Conten-Type" , "Authorization" , "Access-Control-Allow-Private-Network"],
 };
 
 app.use(cors(corsOptions));
 
 app.get('/', (req, res) => {    
+    
     /*req.sendFile(path.join(__dirname, '/build/index.html'));*/
 })
 
