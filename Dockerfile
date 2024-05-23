@@ -58,7 +58,6 @@ COPY nginx/nginx_sub.conf /etc/nginx/nginx.conf
 EXPOSE 80
 
 RUN npm install
-RUN pm2 start server.js
 
 RUN chmod +x start.sh
 
