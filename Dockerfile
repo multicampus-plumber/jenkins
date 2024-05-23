@@ -55,5 +55,7 @@ EXPOSE 80
 RUN npm install
 RUN npm start &
 
+RUN nginx -s reload
+
 # nginx 서버를 실행하고 백그라운드로 동작하도록 한다.
 CMD ["nginx", "-g", "daemon off;"]
