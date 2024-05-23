@@ -37,6 +37,11 @@ app.get('/', (req, res) => {
     /*req.sendFile(path.join(__dirname, '/build/index.html'));*/
 })
 
+app.get('/api', (req, res) => {    
+    res.send("테스트테스트")
+    /*req.sendFile(path.join(__dirname, '/build/index.html'));*/
+})
+
 app.get('/authcheck', (req, res) => {      
     const sendData = { isLogin: "" };
     if (req.session.is_logined) {
