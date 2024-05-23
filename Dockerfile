@@ -61,5 +61,7 @@ RUN npm install
 
 RUN chmod +x start.sh
 
+#RUN pm2 start server.js
+
 # nginx 서버를 실행하고 백그라운드로 동작하도록 한다.
-CMD ["/backend/start.sh"]
+CMD ["/start.sh"]
