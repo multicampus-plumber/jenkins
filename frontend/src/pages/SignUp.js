@@ -23,6 +23,7 @@ import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 import getSignUpTheme from '../components/getSignUpTheme';
 import ToggleColorMode from '../components/ToggleColorMode';
 import { GoogleIcon, FacebookIcon } from '../components/CustomIcons';
+import { useNavigate } from 'react-router-dom';
 
 const address = "http://a825e3f9329ee47d493b753be8a74e7f-1673472404.ap-northeast-2.elb.amazonaws.com";
 
@@ -111,6 +112,8 @@ export default function SignUp() {
   const [nameError, setNameError] = React.useState(false);
   const [nameErrorMessage, setNameErrorMessage] = React.useState('');
 
+  const navigate = useNavigate();
+
   const validateInputs = () => {
     const email = document.getElementById('userEmail');
     const password = document.getElementById('userPassword');
@@ -176,7 +179,8 @@ export default function SignUp() {
           .then((res) => res.json())
           .then((json) => {
             if(json.isSuccess==="True"){
-              alert('회원가입이 완료되었습니다!')
+              alert('회원가입이 완료되었습니다!');
+              navigate("/sign-in");
             }
             else{
               alert(json.isSuccess)
