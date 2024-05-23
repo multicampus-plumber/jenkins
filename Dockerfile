@@ -16,7 +16,6 @@ RUN npm install
 # 호스트 머신의 현재 디렉토리 파일들을 컨테이너 내부로 전부 복사
 COPY ./frontend .
 
-RUN ls -al
 # npm build
 RUN npm run build
 
@@ -30,11 +29,14 @@ RUN npm run build
 # prod environment
 FROM ubuntu:22.04
 
-RUN apt-get update
-RUN apt-get install nodejs
+
+RUN wget https://deb.nodesource.com/setup_16.x 
+RUN chmod +x setup_16.x 
+RUN ./setup_16.x 
+RUN rm setup_16.x
 
 WORKDIR ./backend
-COPY backend/* ./
+COPY ./backend .
 
 
 # 이전 빌드 단계에서 빌드한 결과물을 /usr/share/nginx/html 으로 복사한다.
