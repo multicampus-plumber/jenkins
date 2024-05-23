@@ -163,6 +163,9 @@ export default function SignUp() {
       userPassword: data.get('userPassword')
     }
 
+    if ( userData.userPassword.length < 6 )
+      return;
+
     fetch(address + "/signup", { //signin 주소에서 받을 예정
           method: "post", // method :통신방법
           headers: {      // headers: API 응답에 대한 정보를 담음

@@ -124,8 +124,6 @@ app.post("/signup", (req, res) => {  // 데이터 받아서 결과 전송
                         res.send(sendData);
                     });
                 });
-                sendData.isSuccess = "로그인 성공"
-                res.send(sendData);
             }
             else {                                                  // DB에 같은 이름의 회원아이디가 있는 경우            
                 sendData.isSuccess = "이미 존재하는 아이디 입니다!"
