@@ -2,9 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
-import Link from '@mui/material/Link';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import Stack from '@mui/material/Stack';
@@ -18,11 +16,9 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
-import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 
 
-import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 import AutoAwesomeRoundedIcon from '@mui/icons-material/AutoAwesomeRounded';
 
 import getSignInTheme from '../components/getSignInTheme';
@@ -119,7 +115,7 @@ export default function Jaso() {
   const [tableList, setTableList] = useState([])
 
   useEffect(() => {
-    axios.get(address+'/api2/get').then((response)=> {
+    axios.get(address+'/api/jaso').then((response)=> {
       console.log(response.data);
       setTableList(response.data);
     })
@@ -175,6 +171,9 @@ export default function Jaso() {
             p: { xs: 2, sm: 4 },
           }}
         >
+
+        {
+          /*
           <Button
             startIcon={<ArrowBackRoundedIcon />}
             component="a"
@@ -183,6 +182,8 @@ export default function Jaso() {
             Back
           </Button>
           <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
+          */
+        }
         </Stack>
       </SignInContainer>
     </ThemeProvider>

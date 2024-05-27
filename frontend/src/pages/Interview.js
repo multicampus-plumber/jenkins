@@ -1,29 +1,31 @@
-import React, { useEffect, useState } from 'react';
 
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
-import Link from '@mui/material/Link';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import Stack from '@mui/material/Stack';
 import { Card as MuiCard } from '@mui/material';
 import { ThemeProvider, createTheme, styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
+import axios from 'axios';
+
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
 
 
-
-import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 import AutoAwesomeRoundedIcon from '@mui/icons-material/AutoAwesomeRounded';
 
 import getSignInTheme from '../components/getSignInTheme';
 import ToggleColorMode from '../components/ToggleColorMode';
 
+const address = "http://a825e3f9329ee47d493b753be8a74e7f-1673472404.ap-northeast-2.elb.amazonaws.com";
 
-import CommonTable from '../components/CommonTable';
-import CommonTableColumn from '../components/CommonTableColumn';
-import CommonTableRow from '../components/CommonTableRow';
 
 
 
@@ -100,46 +102,66 @@ const SignInContainer = styled(Stack)(({ theme }) => ({
   },
 }));
 
-//CSS 관련
 
 
 
-function GetData() {
-  const [data, setData] = useState({});
-
-
-  const item = (Object.values(data)).map((item) => (
-    <CommonTableRow key={item.id}>
-      <CommonTableColumn>{item.id}</CommonTableColumn>
-      <CommonTableColumn>{item.title}</CommonTableColumn>
-      <CommonTableColumn>{item.createAt}</CommonTableColumn>
-      <CommonTableColumn>{item.username}</CommonTableColumn>
-    </CommonTableRow>
-  ));
-
-  return item;
-}
-
-function Resume() {
-  const item = GetData();
-
+export default function Interview() {
   const [mode, setMode] = React.useState('dark');
   const [showCustomTheme, setShowCustomTheme] = React.useState(true);
   const defaultTheme = createTheme({ palette: { mode } });
   const SignInTheme = createTheme(getSignInTheme(mode));
 
+  
+  const [tableList, setTableList] = useState([])
+
+  useEffect(() => {
+    axios.get(address+'/api/interview').then((response)=> {
+      console.log(response.data);
+      setTableList(response.data);
+    })
+  }, [])
 
   const toggleColorMode = () => {
     setMode((prev) => (prev === 'dark' ? 'light' : 'dark'));
   };
 
 
-  return (<>
-
-<ThemeProvider theme={showCustomTheme ? SignInTheme : defaultTheme}>
+  return (
+    <ThemeProvider theme={showCustomTheme ? SignInTheme : defaultTheme}>
       <CssBaseline />
-
-      <SignInContainer direction="column" justifyContent="space-between">
+      
+        <Stack>
+          <Paper>
+          <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            <TableCell>글번호</TableCell>
+            <TableCell align="right">제목</TableCell>
+            <TableCell align="right">등록일</TableCell>
+            <TableCell align="right">작성자</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {tableList.map((row) => (
+            <TableRow
+              key={row.id}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+            >
+              <TableCell component="th" scope="row">
+                {row.id}
+              </TableCell>
+              <TableCell align="right">{row.title}</TableCell>
+              <TableCell align="right">{row.createAt}</TableCell>
+              <TableCell align="right">{row.username}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+          </Paper>
+        </Stack>
+        <SignInContainer direction="column" justifyContent="space-between">
         <Stack
           direction="row"
           justifyContent="space-between"
@@ -149,6 +171,9 @@ function Resume() {
             p: { xs: 2, sm: 4 },
           }}
         >
+
+        {
+          /*
           <Button
             startIcon={<ArrowBackRoundedIcon />}
             component="a"
@@ -157,18 +182,10 @@ function Resume() {
             Back
           </Button>
           <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
-        </Stack>
-        <Stack>
-          <Paper>
-          <CommonTable headersName={['글번호', '제목', '등록일', '작성자']}>
-            {item}
-          </CommonTable>
-          </Paper>
+          */
+        }
         </Stack>
       </SignInContainer>
     </ThemeProvider>
-
-  </>);
+  );
 }
-  
-export default Resume;

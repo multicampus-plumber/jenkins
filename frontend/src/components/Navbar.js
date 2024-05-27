@@ -18,7 +18,7 @@ export default function ButtonAppBar(props) {
           <Button color="inherit" href='/interview'>면접 후기</Button>
           { props.mode === "LOGIN" ? 
             <Button color="inherit" href='/sign-in'>Login</Button> : 
-           <Button color="inherit" href='/logout'>Logout</Button> }
+           <Button color="inherit" href='/api/logout'>Logout</Button> }
         </Toolbar>
       </AppBar>
     </Box>

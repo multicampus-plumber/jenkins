@@ -37,20 +37,21 @@ app.get('/', (req, res) => {
     /*req.sendFile(path.join(__dirname, '/build/index.html'));*/
 })
 
-app.get('/api', (req, res) => {    
-    res.send("테스트테스트")
-    /*req.sendFile(path.join(__dirname, '/build/index.html'));*/
-})
-
-app.get('/api2/get', (req, res)=> {
+app.get('/api/jaso', (req, res)=> {
     const sqlSel = "select * from jaso order by id;"
     db.query(sqlSel, (err, result) => {
-        console.log(result)
         res.send(result)
     })
 });
 
-app.get('/authcheck', (req, res) => {      
+app.get('/api/interview', (req, res)=> {
+    const sqlSel = "select * from interview order by id;"
+    db.query(sqlSel, (err, result) => {
+        res.send(result)
+    })
+});
+
+app.get('/api/authcheck', (req, res) => {      
     const sendData = { isLogin: "" };
     if (req.session.is_logined) {
         sendData.isLogin = "True"
@@ -60,13 +61,13 @@ app.get('/authcheck', (req, res) => {
     res.send(sendData);
 })
 
-app.get('/logout', function (req, res) {
+app.get('/api/logout', function (req, res) {
     req.session.destroy(function (err) {
         res.redirect('/');
     });
 });
 
-app.post("/login", (req, res) => { // 데이터 받아서 결과 전송
+app.post("/api/login", (req, res) => { // 데이터 받아서 결과 전송
     const email = req.body.userEmail;
     const password = req.body.userPassword;
     const sendData = { isLogin: "" };
@@ -106,7 +107,7 @@ app.post("/login", (req, res) => { // 데이터 받아서 결과 전송
     }
 });
 
-app.post("/signup", (req, res) => {  // 데이터 받아서 결과 전송
+app.post("/api/signup", (req, res) => {  // 데이터 받아서 결과 전송
     const username = req.body.userName;
     const useremail = req.body.userEmail;
     const password = req.body.userPassword;
