@@ -42,6 +42,13 @@ app.get('/api', (req, res) => {
     /*req.sendFile(path.join(__dirname, '/build/index.html'));*/
 })
 
+app.get('/api2/get', (req, res)=> {
+    const sqlSel = "select * from jaso order by id;"
+    db.query(sqlSel, (err, result) => {
+        res.send(result)
+    })
+});
+
 app.get('/authcheck', (req, res) => {      
     const sendData = { isLogin: "" };
     if (req.session.is_logined) {

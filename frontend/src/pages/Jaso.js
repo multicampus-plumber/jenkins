@@ -11,6 +11,15 @@ import Stack from '@mui/material/Stack';
 import { Card as MuiCard } from '@mui/material';
 import { ThemeProvider, createTheme, styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
+import axios from 'axios';
+
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TablePagination from '@mui/material/TablePagination';
+import TableRow from '@mui/material/TableRow';
 
 
 import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
@@ -19,9 +28,9 @@ import AutoAwesomeRoundedIcon from '@mui/icons-material/AutoAwesomeRounded';
 import getSignInTheme from '../components/getSignInTheme';
 import ToggleColorMode from '../components/ToggleColorMode';
 
-import CommonTable from '../components/CommonTable';
-import CommonTableColumn from '../components/CommonTableColumn';
-import CommonTableRow from '../components/CommonTableRow';
+
+
+
 
 
 function ToggleCustomTheme({ showCustomTheme, toggleCustomTheme }) {
@@ -98,21 +107,7 @@ const SignInContainer = styled(Stack)(({ theme }) => ({
 }));
 
 
-function GetData() {
-  const [data, setData] = useState({});
 
-
-  const item = (Object.values(data)).map((item) => (
-    <CommonTableRow key={item.id}>
-      <CommonTableColumn>{item.id}</CommonTableColumn>
-      <CommonTableColumn>{item.title}</CommonTableColumn>
-      <CommonTableColumn>{item.createAt}</CommonTableColumn>
-      <CommonTableColumn>{item.username}</CommonTableColumn>
-    </CommonTableRow>
-  ));
-
-  return item;
-}
 
 export default function Jaso() {
   const [mode, setMode] = React.useState('dark');
@@ -120,7 +115,14 @@ export default function Jaso() {
   const defaultTheme = createTheme({ palette: { mode } });
   const SignInTheme = createTheme(getSignInTheme(mode));
 
-  const item = GetData();
+  
+  const [tableList, setTableList] = useState([])
+
+  useEffect(() => {
+    axios.get('http://localhost:3001/api2/get').then((response)=> {
+      setTableList(response.data);
+    })
+  }, [])
 
   const toggleColorMode = () => {
     setMode((prev) => (prev === 'dark' ? 'light' : 'dark'));
@@ -130,7 +132,39 @@ export default function Jaso() {
   return (
     <ThemeProvider theme={showCustomTheme ? SignInTheme : defaultTheme}>
       <CssBaseline />
-      <SignInContainer direction="column" justifyContent="space-between">
+      
+        <Stack>
+          <Paper>
+          <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            <TableCell>글번호</TableCell>
+            <TableCell align="right">제목</TableCell>
+            <TableCell align="right">등록일</TableCell>
+            <TableCell align="right">작성자</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {tableList.map((row) => (
+            <TableRow
+              key={row.id}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+            >
+              <TableCell component="th" scope="row">
+                {row.id}
+              </TableCell>
+              <TableCell align="right">{row.title}</TableCell>
+              <TableCell align="right">{row.createAt}</TableCell>
+              <TableCell align="right">{row.username}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+          </Paper>
+        </Stack>
+        <SignInContainer direction="column" justifyContent="space-between">
         <Stack
           direction="row"
           justifyContent="space-between"
@@ -148,13 +182,6 @@ export default function Jaso() {
             Back
           </Button>
           <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
-        </Stack>
-        <Stack>
-          <Paper>
-          <CommonTable headersName={['글번호', '제목', '등록일', '작성자']}>
-            {item}
-          </CommonTable>
-          </Paper>
         </Stack>
       </SignInContainer>
     </ThemeProvider>
