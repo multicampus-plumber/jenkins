@@ -28,7 +28,7 @@ import AutoAwesomeRoundedIcon from '@mui/icons-material/AutoAwesomeRounded';
 import getSignInTheme from '../components/getSignInTheme';
 import ToggleColorMode from '../components/ToggleColorMode';
 
-
+const address = "http://a825e3f9329ee47d493b753be8a74e7f-1673472404.ap-northeast-2.elb.amazonaws.com";
 
 
 
@@ -119,7 +119,7 @@ export default function Jaso() {
   const [tableList, setTableList] = useState([])
 
   useEffect(() => {
-    axios.get('http://localhost:3001/api2/get').then((response)=> {
+    axios.get(address+'/api2/get').then((response)=> {
       setTableList(response.data);
     })
   }, [])
