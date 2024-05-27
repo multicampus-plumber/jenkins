@@ -45,6 +45,7 @@ app.get('/api', (req, res) => {
 app.get('/api2/get', (req, res)=> {
     const sqlSel = "select * from jaso order by id;"
     db.query(sqlSel, (err, result) => {
+        console.log(result)
         res.send(result)
     })
 });

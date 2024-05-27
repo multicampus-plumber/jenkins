@@ -120,6 +120,7 @@ export default function Jaso() {
 
   useEffect(() => {
     axios.get(address+'/api2/get').then((response)=> {
+      console.log(response.data);
       setTableList(response.data);
     })
   }, [])
