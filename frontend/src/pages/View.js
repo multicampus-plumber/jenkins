@@ -123,8 +123,8 @@ function DetailVeiw() {
       table: searchParams.get("t"),
       id: searchParams.get("i"),
     };
-
-    axios.post(address + "/api/view", boardData).then((response) => {
+    console.log(boardData)
+    axios.post(address+"/api/view", boardData).then((response) => {
       console.log(response.data);
       setViewData(response.data);
       //console.log(viewData);
@@ -157,51 +157,7 @@ function DetailVeiw() {
           <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
         */}
           </Stack>
-          <Stack
-            justifyContent="center"
-            sx={{ height: { xs: "100%", sm: "100dvh" }, p: 2 }}
-          >
-            <Card>
-              <Typography
-                component="h1"
-                variant="h4"
-                sx={{ width: "100%", fontSize: "clamp(2rem, 10vw, 2.15rem)" }}
-              >
-                상세 페이지
-              </Typography>
-              <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-                <Typography component="h5" variant="h5">
-                  작성자
-                </Typography>
-                <TextField
-                  sx={{ "& > :not(style)": { m: 1, width: "50ch" } }}
-                  disabled
-                >
-                  {viewData.username}
-                </TextField>
-                <Divider variant="middle" />
-                <Typography component="h5" variant="h5">
-                  작성 날짜
-                </Typography>
-                <TextField
-                  sx={{ "& > :not(style)": { m: 1, width: "50ch" } }}
-                  disabled
-                >
-                  {viewData.createAt}
-                </TextField>
-                <Divider variant="middle" />
-                <Typography component="h5" variant="h5">
-                  내용
-                </Typography>
-                <TextField
-                  sx={{ "& > :not(style)": { m: 1, height: "50ch" } }}
-                  disabled
-                >
-                  {viewData.content}
-                </TextField>
-              </Box>
-            </Card>
-          </Stack>
+
         </SignInContainer>
       </ThemeProvider>
     </>

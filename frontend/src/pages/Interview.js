@@ -9,6 +9,7 @@ import { Card as MuiCard } from "@mui/material";
 import { ThemeProvider, createTheme, styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import axios from "axios";
+import Link from "@mui/material/Link";
 
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -143,7 +144,7 @@ export default function Interview() {
                       {row.id}
                     </TableCell>
                     <TableCell align="right">
-                      <a href={"/view?t=interview&i=" + row.id}>{row.title}</a>
+                      <Link href={"/view?t=interview&i=" + row.id}>{row.title}</Link>
                     </TableCell>
                     <TableCell align="right">{row.createAt}</TableCell>
                     <TableCell align="right">{row.username}</TableCell>
