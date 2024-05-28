@@ -69,6 +69,20 @@ app.get("/api/logout", function (req, res) {
   });
 });
 
+app.post("/api/view", (req, res) => {
+  const table = req.body.table;
+  const id = req.body.id;
+  let sqlqry = "";
+
+  if (table === "jaso") sqlqry = "select * from jaso where id = ?";
+  else if (table === "interview")
+    sqlqry = "select * from interview where id = ?";
+
+  db.query(sqlqry, [id], (err, result) => {
+    res.send(result);
+  });
+});
+
 app.post("/api/login", (req, res) => {
   // 데이터 받아서 결과 전송
   const email = req.body.userEmail;

@@ -142,7 +142,9 @@ export default function Interview() {
                     <TableCell component="th" scope="row">
                       {row.id}
                     </TableCell>
-                    <TableCell align="right">{row.title}</TableCell>
+                    <TableCell align="right">
+                      <a href={"/view?t=interview&i=" + row.id}>{row.title}</a>
+                    </TableCell>
                     <TableCell align="right">{row.createAt}</TableCell>
                     <TableCell align="right">{row.username}</TableCell>
                   </TableRow>

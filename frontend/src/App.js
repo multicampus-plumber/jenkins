@@ -6,6 +6,7 @@ import Jaso from "./pages/Jaso";
 import Interview from "./pages/Interview";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
+import View from "./pages/View";
 function App() {
   const [mode, setMode] = useState("");
 
@@ -34,6 +35,8 @@ function App() {
           <Route path="/interview" element={<Interview />} />
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />
+
+          <Route path="/view" element={<View />} />
         </Routes>
       </Router>
     </>
