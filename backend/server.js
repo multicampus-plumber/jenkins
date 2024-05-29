@@ -57,6 +57,7 @@ app.get("/api/authcheck", (req, res) => {
   const sendData = { isLogin: "" };
   if (req.session.is_logined) {
     sendData.isLogin = "True";
+    sendData.nickName = req.session.nickname;
   } else {
     sendData.isLogin = "False";
   }

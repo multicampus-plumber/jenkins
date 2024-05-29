@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import FormControl from '@mui/material/FormControl';
+import FormControl from "@mui/material/FormControl";
 import Stack from "@mui/material/Stack";
 import { Card as MuiCard } from "@mui/material";
 import { ThemeProvider, createTheme, styled } from "@mui/material/styles";
@@ -107,46 +107,11 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 function TextUpload() {
-    const [textError, setTextError] = React.useState(false);
-    const [textErrorMessage, setTextErrorMessage] = React.useState("");
-    const [titleError, setTitleError] = React.useState(false);
-    const [titleErrorMessage, setTitleErrorMessage] = React.useState("");
+  const [textError, setTextError] = React.useState(false);
+  const [textErrorMessage, setTextErrorMessage] = React.useState("");
+  const [titleError, setTitleError] = React.useState(false);
+  const [titleErrorMessage, setTitleErrorMessage] = React.useState("");
 
-
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-    
-        const data = new FormData(event.currentTarget);
-
-      };
-
-
-    const validateInputs = () => {
-        const uploadText = document.getElementById("uploadText");
-        const uploadTitle = document.getElementById("uploadTitle");
-        let isValid = true;
-    
-        if (!uploadText.value || uploadText.value.length < 20) {
-          setTextError(true);
-          setTextErrorMessage("내용을 20자리 이상 입력해주십시오.");
-          isValid = false;
-        } else {
-          setTextError(false);
-          setTextErrorMessage("");
-        }
-
-        if (!uploadTitle.value || uploadTitle.value.length < 5) {
-            setTitleError(true);
-            setTitleErrorMessage("제목을 5자리 이상 입력해주십시오.");
-            isValid = false;
-          } else {
-            setTitleError(false);
-            setTitleErrorMessage("");
-          }
-    
-        return isValid;
-      };
   const [mode, setMode] = React.useState("dark");
   const [showCustomTheme, setShowCustomTheme] = React.useState(true);
   const defaultTheme = createTheme({ palette: { mode } });
@@ -154,6 +119,38 @@ function TextUpload() {
 
   const [searchParams, setSearchParams] = useSearchParams();
   const [viewData, setViewData] = useState();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const data = new FormData(event.currentTarget);
+  };
+
+  const validateInputs = () => {
+    const uploadText = document.getElementById("uploadText");
+    const uploadTitle = document.getElementById("uploadTitle");
+    let isValid = true;
+
+    if (!uploadText.value || uploadText.value.length < 20) {
+      setTextError(true);
+      setTextErrorMessage("내용을 20자리 이상 입력해주십시오.");
+      isValid = false;
+    } else {
+      setTextError(false);
+      setTextErrorMessage("");
+    }
+
+    if (!uploadTitle.value || uploadTitle.value.length < 5) {
+      setTitleError(true);
+      setTitleErrorMessage("제목을 5자리 이상 입력해주십시오.");
+      isValid = false;
+    } else {
+      setTitleError(false);
+      setTitleErrorMessage("");
+    }
+
+    return isValid;
+  };
 
   const toggleColorMode = () => {
     setMode((prev) => (prev === "dark" ? "light" : "dark"));
@@ -197,38 +194,41 @@ function TextUpload() {
               >
                 자소서 / 면접 후기 작성
               </Typography>
-                <Box  component="form"
+              <Box
+                component="form"
                 onSubmit={handleSubmit}
                 noValidate
                 sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    width: "100%",
-                    gap: 2,
+                  display: "flex",
+                  flexDirection: "column",
+                  width: "100%",
+                  gap: 2,
                 }}
-                >
-                  <Divider variant="middle" />
-                  <FormLabel htmlFor="uploadTitle">제목</FormLabel>
-                  <FormControl>
-                    <TextField
-                        sx={{ m:1 }}
-                        error={titleError}
-                        helperText={titleErrorMessage}
-                        color={titleError ? "error" : "primary"}
-                        rows={1}
-                        name="uploadTitle"
-                        id="uploadTitle"
-                        placeholder="제목을 입력해주세요."
-                        fullWidth
-                        required
-                        autoFocus
-                    ></TextField>
-                  </FormControl>
-                  <Divider variant="middle" />
-                  <FormLabel htmlFor="uploadText">내용</FormLabel>
-                  <FormControl>
+              >
+                <Divider variant="middle" />
+                <FormLabel htmlFor="uploadTitle">제목</FormLabel>
+                <FormControl>
                   <TextField
-                    sx={{ m: 1, height: "50ch"}} multiline rows={17}
+                    sx={{ m: 1 }}
+                    error={titleError}
+                    helperText={titleErrorMessage}
+                    color={titleError ? "error" : "primary"}
+                    rows={1}
+                    name="uploadTitle"
+                    id="uploadTitle"
+                    placeholder="제목을 입력해주세요."
+                    fullWidth
+                    required
+                    autoFocus
+                  ></TextField>
+                </FormControl>
+                <Divider variant="middle" />
+                <FormLabel htmlFor="uploadText">내용</FormLabel>
+                <FormControl>
+                  <TextField
+                    sx={{ m: 1, height: "50ch" }}
+                    multiline
+                    rows={17}
                     error={textError}
                     helperText={textErrorMessage}
                     color={textError ? "error" : "primary"}
@@ -238,16 +238,16 @@ function TextUpload() {
                     fullWidth
                     required
                   ></TextField>
-                  </FormControl>
-                  <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        onClick={validateInputs}
-                    >
-                        저장 하기
-                    </Button>
-                </Box>
+                </FormControl>
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  onClick={validateInputs}
+                >
+                  저장 하기
+                </Button>
+              </Box>
             </Card>
           </Stack>
         </SignInContainer>

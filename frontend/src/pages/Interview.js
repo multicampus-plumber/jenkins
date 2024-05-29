@@ -110,10 +110,12 @@ export default function Interview() {
 
   useEffect(() => {
     fetch(
-      "http://a825e3f9329ee47d493b753be8a74e7f-1673472404.ap-northeast-2.elb.amazonaws.com/api/authcheck"
+      //"http://a825e3f9329ee47d493b753be8a74e7f-1673472404.ap-northeast-2.elb.amazonaws.com/api/authcheck"
+      "http://localhost:3001/api/authcheck"
     )
       .then((res) => res.json())
       .then((json) => {
+        console.log(json);
         if (json.isLogin === "True") {
           setisLogin("True");
         } else {
@@ -140,7 +142,7 @@ export default function Interview() {
         <Grid item xs={11}></Grid>
         {isLogin === "True" ? (
           <Grid item xs={1}>
-            <Button variant="contained" href="/upload">
+            <Button variant="contained" href="/upload&t=interview">
               글쓰기
             </Button>
           </Grid>

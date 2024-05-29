@@ -142,7 +142,7 @@ export default function Jaso() {
         <Grid item xs={11}></Grid>
         {isLogin === "True" ? (
           <Grid item xs={1}>
-            <Button variant="contained" href="/upload">
+            <Button variant="contained" href="/upload&t=jaso">
               글쓰기
             </Button>
           </Grid>
