@@ -110,7 +110,7 @@ function DetailVeiw() {
   const SignInTheme = createTheme(getSignInTheme(mode));
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const [viewData, setViewData] = useState();
+  const [viewData, setViewData] = useState([]);
 
   const toggleColorMode = () => {
     setMode((prev) => (prev === "dark" ? "light" : "dark"));

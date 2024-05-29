@@ -5,7 +5,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import Stack from "@mui/material/Stack";
-import { Card as MuiCard } from "@mui/material";
+import { Button, Grid, Card as MuiCard } from "@mui/material";
 import { ThemeProvider, createTheme, styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import axios from "axios";
@@ -107,7 +107,23 @@ export default function Jaso() {
 
   const [tableList, setTableList] = useState([]);
 
+  const [isLogin, setisLogin] = useState("");
+
+  console.log(isLogin);
   useEffect(() => {
+    fetch(
+      "http://a825e3f9329ee47d493b753be8a74e7f-1673472404.ap-northeast-2.elb.amazonaws.com/api/authcheck"
+    )
+      .then((res) => res.json())
+      .then((json) => {
+        if (json.isLogin === "True") {
+          setisLogin("True");
+        } else {
+          setisLogin("False");
+        }
+        console.log(json);
+      });
+
     axios.get(address + "/api/jaso").then((response) => {
       console.log(response.data);
       setTableList(response.data);
@@ -121,6 +137,21 @@ export default function Jaso() {
   return (
     <ThemeProvider theme={showCustomTheme ? SignInTheme : defaultTheme}>
       <CssBaseline />
+
+      <Grid container spacing={3} padding="1rem 0">
+        <Grid item xs={11}></Grid>
+        {isLogin === "True" ? (
+          <Grid item xs={1}>
+            <Button variant="contained" href="/">
+              글쓰기
+            </Button>
+          </Grid>
+        ) : (
+          <Grid item xs={1}>
+            <Button variant="contained">글쓰기</Button>
+          </Grid>
+        )}
+      </Grid>
 
       <Stack>
         <Paper>
@@ -155,6 +186,7 @@ export default function Jaso() {
           </TableContainer>
         </Paper>
       </Stack>
+
       <SignInContainer direction="column" justifyContent="space-between">
         <Stack
           direction="row"

@@ -5,7 +5,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import Stack from "@mui/material/Stack";
-import { Card as MuiCard } from "@mui/material";
+import { Button, Grid, Card as MuiCard } from "@mui/material";
 import { ThemeProvider, createTheme, styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import axios from "axios";
@@ -106,8 +106,22 @@ export default function Interview() {
   const SignInTheme = createTheme(getSignInTheme(mode));
 
   const [tableList, setTableList] = useState([]);
+  const [isLogin, setisLogin] = useState("");
 
   useEffect(() => {
+    fetch(
+      "http://a825e3f9329ee47d493b753be8a74e7f-1673472404.ap-northeast-2.elb.amazonaws.com/api/authcheck"
+    )
+      .then((res) => res.json())
+      .then((json) => {
+        if (json.isLogin === "True") {
+          setisLogin("True");
+        } else {
+          setisLogin("False");
+        }
+        console.log(json);
+      });
+
     axios.get(address + "/api/interview").then((response) => {
       console.log(response.data);
       setTableList(response.data);
@@ -122,6 +136,19 @@ export default function Interview() {
     <ThemeProvider theme={showCustomTheme ? SignInTheme : defaultTheme}>
       <CssBaseline />
 
+      <Grid container spacing={3} padding="1rem 0">
+        {isLogin === "True" ? (
+          <Grid item xs={1}>
+            <Button variant="contained" href="/">
+              글쓰기
+            </Button>
+          </Grid>
+        ) : (
+          <Grid item xs={1}>
+            <Button variant="contained">글쓰기</Button>
+          </Grid>
+        )}
+      </Grid>
       <Stack>
         <Paper>
           <TableContainer component={Paper}>
@@ -144,7 +171,9 @@ export default function Interview() {
                       {row.id}
                     </TableCell>
                     <TableCell align="right">
-                      <Link href={"/view?t=interview&i=" + row.id}>{row.title}</Link>
+                      <Link href={"/view?t=interview&i=" + row.id}>
+                        {row.title}
+                      </Link>
                     </TableCell>
                     <TableCell align="right">{row.createAt}</TableCell>
                     <TableCell align="right">{row.username}</TableCell>
