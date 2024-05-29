@@ -120,6 +120,8 @@ function TextUpload() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [userEmail, setUserEmail] = useState("");
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     setSearchParams(searchParams);
 
@@ -128,7 +130,7 @@ function TextUpload() {
     )
       .then((res) => res.json())
       .then((json) => {
-        setUserEmail(json.userEmail);
+        setUserEmail(json.nickName);
       });
   }, []);
 
@@ -152,11 +154,7 @@ function TextUpload() {
         "content-type": "application/json",
       },
       body: JSON.stringify(boardData), //userData라는 객체를 보냄
-    })
-      .then((res) => res.json())
-      .then((json) => {
-        console.log(json);
-      });
+    }).then((res) => navigate("/" + boardData.table));
   };
 
   const validateInputs = () => {

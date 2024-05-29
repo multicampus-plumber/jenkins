@@ -84,6 +84,8 @@ app.post("/api/upload", (req, res) => {
       "INSERT INTO interview (title, content, createAt, username) VALUES (?, ?, now(), ?)";
 
   db.query(sqlqry, [title, content, email], (err, result) => {
+    console.log(err);
+    console.log(result);
     res.send(result);
   });
 });

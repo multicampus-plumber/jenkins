@@ -109,7 +109,6 @@ export default function Jaso() {
 
   const [isLogin, setisLogin] = useState("");
 
-  console.log(isLogin);
   useEffect(() => {
     fetch(
       "http://a825e3f9329ee47d493b753be8a74e7f-1673472404.ap-northeast-2.elb.amazonaws.com/api/authcheck"
