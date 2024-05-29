@@ -70,21 +70,25 @@ app.get("/api/logout", function (req, res) {
   });
 });
 
-app.post("/api/view", (req, res) => {
+app.post("/api/upload", (req, res) => {
   const table = req.body.table;
-  const id = req.body.id;
-  let sqlqry = "";
+  const title = req.body.title;
+  const content = req.body.content;
+  const email = req.body.email;
 
-  if (table === "jaso") sqlqry = "select * from jaso where id = ?";
+  if (table === "jaso")
+    sqlqry =
+      "INSERT INTO jaso (title, content, createAt, username) VALUES (?, ?, now(), ?)";
   else if (table === "interview")
-    sqlqry = "select * from interview where id = ?";
+    sqlqry =
+      "INSERT INTO interview (title, content, createAt, username) VALUES (?, ?, now(), ?)";
 
-  db.query(sqlqry, [id], (err, result) => {
+  db.query(sqlqry, [title, content, email], (err, result) => {
     res.send(result);
   });
 });
 
-app.post("/api/createBoard", (req, res) => {
+app.post("/api/view", (req, res) => {
   const table = req.body.table;
   const id = req.body.id;
   let sqlqry = "";

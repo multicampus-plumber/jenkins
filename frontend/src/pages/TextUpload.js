@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -118,12 +118,47 @@ function TextUpload() {
   const SignInTheme = createTheme(getSignInTheme(mode));
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const [viewData, setViewData] = useState();
+  const [userEmail, setUserEmail] = useState("");
+
+  useEffect(() => {
+    setSearchParams(searchParams);
+
+    // fetch(
+    //   "http://a825e3f9329ee47d493b753be8a74e7f-1673472404.ap-northeast-2.elb.amazonaws.com/api/authcheck"
+    // )
+    //   .then((res) => res.json())
+    //   .then((json) => {
+    //     setUserName(json.nickName);
+    //   });
+
+    setUserEmail("1234@1234.com");
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const data = new FormData(event.currentTarget);
+    const uploadText = document.getElementById("uploadText");
+    const uploadTitle = document.getElementById("uploadTitle");
+    const boardData = {
+      table: searchParams.get("t"),
+      title: uploadTitle.value,
+      content: uploadText.value,
+      email: userEmail,
+    };
+
+    fetch(address + "/api/upload", {
+      //auth 주소에서 받을 예정
+      method: "post", // method :통신방법
+      headers: {
+        // headers: API 응답에 대한 정보를 담음
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(boardData), //userData라는 객체를 보냄
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        console.log(json);
+      });
   };
 
   const validateInputs = () => {

@@ -141,7 +141,7 @@ export default function Interview() {
         <Grid item xs={11}></Grid>
         {isLogin === "True" ? (
           <Grid item xs={1}>
-            <Button variant="contained" href="/upload&t=interview">
+            <Button variant="contained" href="/upload?t=interview">
               글쓰기
             </Button>
           </Grid>
