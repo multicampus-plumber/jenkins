@@ -6,6 +6,7 @@ const conn = mysql.createConnection({
   user: "admin",
   password: "ubuntu1!",
   database: "myportfolio",
+  dateStrings: "date",
 });
 
 conn.connect((err) => {
