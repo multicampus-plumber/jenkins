@@ -199,7 +199,7 @@ function TextUpload() {
                   <FormLabel htmlFor="uploadText">내용</FormLabel>
                   <FormControl>
                   <TextField
-                    sx={{ "& > :not(style)": { m: 1, height: "50ch"}}} multiline rows={17}
+                    sx={{ m: 1, height: "50ch"}} multiline rows={17}
                     error={textError}
                     helperText={textErrorMessage}
                     color={textError ? "error" : "primary"}
@@ -207,6 +207,7 @@ function TextUpload() {
                     id="uploadText"
                     placeholder="내용을 입력해주세요."
                     fullWidth
+                    required
                   ></TextField>
                   </FormControl>
                   <Button
