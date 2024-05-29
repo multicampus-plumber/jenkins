@@ -146,7 +146,9 @@ export default function Interview() {
           </Grid>
         ) : (
           <Grid item xs={1}>
-            <Button variant="contained">글쓰기</Button>
+            <Button variant="contained" disabled>
+              글쓰기
+            </Button>
           </Grid>
         )}
       </Grid>
