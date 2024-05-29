@@ -9,19 +9,15 @@ import { Card as MuiCard } from "@mui/material";
 import { ThemeProvider, createTheme, styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import axios from "axios";
-import Link from "@mui/material/Link";
+import { useParams, useSearchParams } from "react-router-dom";
 
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
+import Typography from "@mui/material/Typography";
+import Divider from "@mui/material/Divider";
+import TextField from "@mui/material/TextField";
 
 import AutoAwesomeRoundedIcon from "@mui/icons-material/AutoAwesomeRounded";
 
 import getSignInTheme from "../components/getSignInTheme";
-import ToggleColorMode from "../components/ToggleColorMode";
 
 const address =
   "http://a825e3f9329ee47d493b753be8a74e7f-1673472404.ap-northeast-2.elb.amazonaws.com";
@@ -81,7 +77,7 @@ const Card = styled(MuiCard)(({ theme }) => ({
       : "hsla(220, 30%, 5%, 0.5) 0px 5px 15px 0px, hsla(220, 25%, 10%, 0.08) 0px 15px 35px -5px, hsla(220, 30%, 5%, 0.05) 0px 0px 0px 1px",
   [theme.breakpoints.up("sm")]: {
     padding: theme.spacing(4),
-    width: "450px",
+    width: "1000px",
   },
 }));
 
@@ -99,73 +95,43 @@ const SignInContainer = styled(Stack)(({ theme }) => ({
   },
 }));
 
-export default function Jaso() {
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: "center",
+  color: theme.palette.text.secondary,
+}));
+
+function DetailVeiw() {
   const [mode, setMode] = React.useState("dark");
   const [showCustomTheme, setShowCustomTheme] = React.useState(true);
   const defaultTheme = createTheme({ palette: { mode } });
   const SignInTheme = createTheme(getSignInTheme(mode));
 
-  const [tableList, setTableList] = useState([]);
-
-  useEffect(() => {
-    axios.get(address + "/api/jaso").then((response) => {
-      console.log(response.data);
-      setTableList(response.data);
-    });
-  }, []);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [viewData, setViewData] = useState();
 
   const toggleColorMode = () => {
     setMode((prev) => (prev === "dark" ? "light" : "dark"));
   };
 
   return (
-    <ThemeProvider theme={showCustomTheme ? SignInTheme : defaultTheme}>
-      <CssBaseline />
+    <>
+      <ThemeProvider theme={showCustomTheme ? SignInTheme : defaultTheme}>
+        <CssBaseline />
 
-      <Stack>
-        <Paper>
-          <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
-              <TableHead>
-                <TableRow>
-                  <TableCell>글번호</TableCell>
-                  <TableCell align="right">제목</TableCell>
-                  <TableCell align="right">등록일</TableCell>
-                  <TableCell align="right">작성자</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {tableList.map((row) => (
-                  <TableRow
-                    key={row.id}
-                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                  >
-                    <TableCell component="th" scope="row">
-                      {row.id}
-                    </TableCell>
-                    <TableCell align="right">
-                      <Link href={"/view?t=jaso&i=" + row.id}>{row.title}</Link>
-                    </TableCell>
-                    <TableCell align="right">{row.createAt}</TableCell>
-                    <TableCell align="right">{row.username}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        </Paper>
-      </Stack>
-      <SignInContainer direction="column" justifyContent="space-between">
-        <Stack
-          direction="row"
-          justifyContent="space-between"
-          sx={{
-            position: { xs: "static", sm: "fixed" },
-            width: "100%",
-            p: { xs: 2, sm: 4 },
-          }}
-        >
-          {/*
+        <SignInContainer direction="column" justifyContent="space-between">
+          <Stack
+            direction="row"
+            justifyContent="space-between"
+            sx={{
+              position: { xs: "static", sm: "fixed" },
+              width: "100%",
+              p: { xs: 2, sm: 4 },
+            }}
+          >
+            {/*
           <Button
             startIcon={<ArrowBackRoundedIcon />}
             component="a"
@@ -174,9 +140,12 @@ export default function Jaso() {
             Back
           </Button>
           <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
-          */}
-        </Stack>
-      </SignInContainer>
-    </ThemeProvider>
+        */}
+          </Stack>
+        </SignInContainer>
+      </ThemeProvider>
+    </>
   );
 }
+
+export default DetailVeiw;
