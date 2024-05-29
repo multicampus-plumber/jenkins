@@ -123,15 +123,13 @@ function TextUpload() {
   useEffect(() => {
     setSearchParams(searchParams);
 
-    // fetch(
-    //   "http://a825e3f9329ee47d493b753be8a74e7f-1673472404.ap-northeast-2.elb.amazonaws.com/api/authcheck"
-    // )
-    //   .then((res) => res.json())
-    //   .then((json) => {
-    //     setUserName(json.nickName);
-    //   });
-
-    setUserEmail("1234@1234.com");
+    fetch(
+      "http://a825e3f9329ee47d493b753be8a74e7f-1673472404.ap-northeast-2.elb.amazonaws.com/api/authcheck"
+    )
+      .then((res) => res.json())
+      .then((json) => {
+        setUserEmail(json.userEmail);
+      });
   }, []);
 
   const handleSubmit = (event) => {
