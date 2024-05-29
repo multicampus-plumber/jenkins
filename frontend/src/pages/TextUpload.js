@@ -10,7 +10,7 @@ import { Card as MuiCard } from "@mui/material";
 import { ThemeProvider, createTheme, styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import axios from "axios";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import Button from "@mui/material/Button";
 import FormLabel from "@mui/material/FormLabel";
 
