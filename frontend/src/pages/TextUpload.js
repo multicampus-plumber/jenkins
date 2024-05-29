@@ -109,6 +109,8 @@ const Item = styled(Paper)(({ theme }) => ({
 function TextUpload() {
     const [textError, setTextError] = React.useState(false);
     const [textErrorMessage, setTextErrorMessage] = React.useState("");
+    const [titleError, setTitleError] = React.useState(false);
+    const [titleErrorMessage, setTitleErrorMessage] = React.useState("");
 
 
 
@@ -122,16 +124,26 @@ function TextUpload() {
 
     const validateInputs = () => {
         const uploadText = document.getElementById("uploadText");
+        const uploadTitle = document.getElementById("uploadTitle");
         let isValid = true;
     
-        if (!uploadText.value || uploadText.value.length < 1) {
+        if (!uploadText.value || uploadText.value.length < 20) {
           setTextError(true);
-          setTextErrorMessage("내용을 입력해주십시오.");
+          setTextErrorMessage("내용을 20자리 이상 입력해주십시오.");
           isValid = false;
         } else {
           setTextError(false);
           setTextErrorMessage("");
         }
+
+        if (!uploadTitle.value || uploadTitle.value.length < 5) {
+            setTitleError(true);
+            setTitleErrorMessage("제목을 5자리 이상 입력해주십시오.");
+            isValid = false;
+          } else {
+            setTitleError(false);
+            setTitleErrorMessage("");
+          }
     
         return isValid;
       };
@@ -195,6 +207,23 @@ function TextUpload() {
                     gap: 2,
                 }}
                 >
+                  <Divider variant="middle" />
+                  <FormLabel htmlFor="uploadTitle">제목</FormLabel>
+                  <FormControl>
+                    <TextField
+                        sx={{ m:1 }}
+                        error={titleError}
+                        helperText={titleErrorMessage}
+                        color={titleError ? "error" : "primary"}
+                        rows={1}
+                        name="uploadTitle"
+                        id="uploadTitle"
+                        placeholder="제목을 입력해주세요."
+                        fullWidth
+                        required
+                        autoFocus
+                    ></TextField>
+                  </FormControl>
                   <Divider variant="middle" />
                   <FormLabel htmlFor="uploadText">내용</FormLabel>
                   <FormControl>
