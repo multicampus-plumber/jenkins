@@ -110,8 +110,7 @@ export default function Interview() {
 
   useEffect(() => {
     fetch(
-      //"http://a825e3f9329ee47d493b753be8a74e7f-1673472404.ap-northeast-2.elb.amazonaws.com/api/authcheck"
-      "http://localhost:3001/api/authcheck"
+      "http://a825e3f9329ee47d493b753be8a74e7f-1673472404.ap-northeast-2.elb.amazonaws.com/api/authcheck"
     )
       .then((res) => res.json())
       .then((json) => {
