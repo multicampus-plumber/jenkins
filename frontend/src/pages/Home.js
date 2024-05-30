@@ -105,7 +105,7 @@ function Home() {
         <CssBaseline />
 
         <SignInContainer direction="column" justifyContent="space-between">
-          <Stack
+          {/*<Stack
             direction="row"
             justifyContent="space-between"
             sx={{
@@ -119,12 +119,14 @@ function Home() {
             </Button>
             <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
           </Stack>
+          */}
           <Stack>
             <Paper>
               <div className="MuiPaper-root">
                 <center>
-                  {" "}
-                  <h3>Home</h3>{" "}
+                  <div><img src="img/PLUMBERS.png" style={{height: 250}}></img></div>
+                  <h1> Share PortFolio </h1>
+                  <h1>IT 구직자들의 정보 공유 사이트</h1>
                 </center>
               </div>
             </Paper>
