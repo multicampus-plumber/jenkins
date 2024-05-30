@@ -5,7 +5,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import Stack from "@mui/material/Stack";
-import { Card as MuiCard } from "@mui/material";
+import { Button, Grid, Card as MuiCard } from "@mui/material";
 import { ThemeProvider, createTheme, styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import axios from "axios";
@@ -135,6 +135,14 @@ function DetailVeiw() {
     <>
       <ThemeProvider theme={showCustomTheme ? SignInTheme : defaultTheme}>
         <CssBaseline />
+        <Grid container spacing={3} padding="1rem 0">
+          <Grid item xs={8.5} />
+          <Grid item xs={3.5}>
+            <Button variant="contained" href={"/" + searchParams.get("t")}>
+              목록
+            </Button>
+          </Grid>
+        </Grid>
 
         <SignInContainer direction="column" justifyContent="space-between">
           <Stack
