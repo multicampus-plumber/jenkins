@@ -135,7 +135,14 @@ function DetailVeiw() {
     <>
       <ThemeProvider theme={showCustomTheme ? SignInTheme : defaultTheme}>
         <CssBaseline />
-
+        <Grid container spacing={3} padding="1rem 0">
+          <Grid item xs={8.5} />
+          <Grid item xs={3.5}>
+            <Button variant="contained" href={"/" + searchParams.get("t")}>
+              목록
+            </Button>
+          </Grid>
+        </Grid>
         <SignInContainer direction="column" justifyContent="space-between">
           <Stack
             direction="row"
