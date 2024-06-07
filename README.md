@@ -1,3 +1,8 @@
+# Plumbers
+## 멀티캠퍼스 [한국휴렛팩커드]하이브리드 클라우드 아카데미 1기 최종 프로젝트 
+
+###[ArgoCD Repo](https://github.com/multicampus-plumber/argocd)
+
 사용툴 
 ### 인프라
 ![Amazonaws](https://img.shields.io/badge/-AWS-232F3E?style=flat-square&logo=Amazonaws&logoColor=white)
@@ -11,3 +16,10 @@
 ![AWS RDS(MYSQL)](https://img.shields.io/badge/-MYSQL-4479A1?style=flat&logo=mysql&logoColor=black) with AWS RDS
 ![NGINX](https://img.shields.io/badge/-nginx-009639?style=flat&logo=nginx&logoColor=black)
 ### 모니터링
+![grafana](https://img.shields.io/badge/-Grafana-F46800?style=flat&logo=grafana&logoColor=black)
+![prometheus](https://img.shields.io/badge/-Prometheus-E6522C?style=flat&logo=prometheus&logoColor=black)
+
+### 웹페이지 상세 이미지
+| ![image](https://github.com/multicampus-plumber/jenkins/assets/112372296/627f42a7-ebe0-4c8e-8e96-e3ce3f2a5374) | 
+| :------------------------------------------------------------: |
+| _메인 페이지_|
