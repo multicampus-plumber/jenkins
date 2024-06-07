@@ -1,7 +1,7 @@
 # Plumbers
 ## 멀티캠퍼스 [한국휴렛팩커드]하이브리드 클라우드 아카데미 1기 최종 프로젝트 
 
-###[ArgoCD Repo](https://github.com/multicampus-plumber/argocd)
+### [ArgoCD Repo](https://github.com/multicampus-plumber/argocd)
 
 사용툴 
 ### 인프라
@@ -19,7 +19,22 @@
 ![grafana](https://img.shields.io/badge/-Grafana-F46800?style=flat&logo=grafana&logoColor=black)
 ![prometheus](https://img.shields.io/badge/-Prometheus-E6522C?style=flat&logo=prometheus&logoColor=black)
 
+### 웹페이지 기능
+- 회원가입 / 로그인 구현
+- 각 게시판 페이지 구현
+- 글 작성 페이지 구현
+- 글 상세 페이지 구현
+
 ### 웹페이지 상세 이미지
 | ![image](https://github.com/multicampus-plumber/jenkins/assets/112372296/627f42a7-ebe0-4c8e-8e96-e3ce3f2a5374) | 
 | :------------------------------------------------------------: |
 | _메인 페이지_|
+| ![image](https://github.com/multicampus-plumber/jenkins/assets/112372296/59fd49ae-c30c-4833-b7e0-a6e56e134c5a) |
+| :------------------------------------------------------------: |
+| _게시판 페이지_|
+| ![image](https://github.com/multicampus-plumber/jenkins/assets/112372296/f5956f24-07a5-4750-b053-f70d3e0d71c2) |
+| :------------------------------------------------------------: |
+| _글 작성 페이지_|
+|![image](https://github.com/multicampus-plumber/jenkins/assets/112372296/b7a63763-4252-4d84-a767-60cc8207560a)|
+| :------------------------------------------------------------: |
+| _글 상세 페이지_|
